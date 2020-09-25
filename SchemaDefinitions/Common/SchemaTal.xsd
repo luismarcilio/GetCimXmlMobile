@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--Created with Liquid XML Studio 6.1.15.0 - FREE Community Edition (http://www.liquid-technologies.com)-->
+<xsd:schema xmlns:bpm-error="http://telecomitalia.it/bpm/messageerror/2008-08-03"
+	 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	 targetNamespace="http://telecomitalia.it/bpm/messageerror/2008-08-03"
+	 version="1.0"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xsd:complexType name="CEH-EventTrackType">
+		<xsd:sequence>
+			<xsd:element name="BusinessId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="TransactionId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="EntityId" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						Unique Identifier of the process instance generating the error.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MessageId" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						Name of the BW / iProcess engine generating the error.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Asset" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						Name of the process generating the error.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="EventType" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						Name of the service generating the error.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="WsName" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>
+						Timestamp specifing the time error occured. 
+						This is the time of the error and not the time message for sent to the process (not the EMF timestamp).
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Operation" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Event_Action" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Platform" type="xsd:string" minOccurs="0"/>
+			<xsd:element ref="bpm-error:SIDType" minOccurs="0"/>
+			<xsd:element ref="bpm-error:Message_Code" minOccurs="0"/>
+			<xsd:element ref="bpm-error:Customer_Id" minOccurs="0"/>
+			<xsd:element ref="bpm-error:Cod_Lavorazione" minOccurs="0"/>
+			<xsd:element ref="bpm-error:Tipologia" minOccurs="0"/>
+			<xsd:element ref="bpm-error:Causale" minOccurs="0"/>
+			<xsd:element ref="bpm-error:Data_Richiesta" minOccurs="0"/>
+			<xsd:element ref="bpm-error:Codice_Acli" minOccurs="0"/>
+			<xsd:element ref="bpm-error:rating_sensitive" minOccurs="0"/>
+			<xsd:element ref="bpm-error:categoria" minOccurs="0"/>
+			<xsd:element ref="bpm-error:sys_origin" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CEH-EventDetailsType">
+		<xsd:sequence>
+			<xsd:element name="process_Name" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="step_Name" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="state" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="info1" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="info2" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="info3" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CEH-EventErrorType">
+		<xsd:sequence>
+			<xsd:element name="errorType" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="process_Name" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="activity_Name" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="sidBinMsg" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="error_Msg" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="id_detail" type="xsd:int" minOccurs="0"/>
+			<xsd:element ref="bpm-error:error_code" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CEH-EventMessageType">
+		<xsd:sequence>
+			<xsd:element name="message_Type" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="destinationQueue" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="binMsg" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="TalContext">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="EventTrack" type="bpm-error:CEH-EventTrackType" minOccurs="0"/>
+				<xsd:element name="EventDetails" type="bpm-error:CEH-EventDetailsType" minOccurs="0"/>
+				<xsd:element name="EventError" type="bpm-error:CEH-EventErrorType" minOccurs="0"/>
+				<xsd:element name="EventMessage" type="bpm-error:CEH-EventMessageType" minOccurs="0"/>
+				<xsd:element ref="bpm-error:EventFields" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="EventFields" type="xsd:string"/>
+	<xsd:element name="SIDType" type="xsd:string"/>
+	<xsd:element name="Message_Code" type="xsd:string"/>
+	<xsd:element name="Customer_Id" type="xsd:string"/>
+	<xsd:element name="Cod_Lavorazione" type="xsd:string"/>
+	<xsd:element name="Tipologia" type="xsd:string"/>
+	<xsd:element name="Causale" type="xsd:string"/>
+	<xsd:element name="Data_Richiesta" type="xsd:dateTime"/>
+	<xsd:element name="Codice_Acli" type="xsd:string"/>
+	<xsd:element name="error_code" type="xsd:string"/>
+	<xsd:element name="rating_sensitive" type="xsd:int"/>
+	<xsd:element name="categoria" type="xsd:string"/>
+	<xsd:element name="sys_origin" type="xsd:string"/>
+</xsd:schema>

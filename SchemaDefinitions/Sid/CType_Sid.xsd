@@ -1,0 +1,2975 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Info About File Version
+XSD Versione: 5.21
+145299 - R58-20-1550 - Valorizzazione Flag_No_Carta e Indirizzo email no carta su BA Dipendente Mobile (Modifiche di interesse XBS-MOBILE)
+Nuovi campi noPaper, noPaperEmail nella sezione Dettaglio Prodotto/Servizio ProductOrder/ProductOrderItem/ProductComponent/ProductReferences/Service/
+(da LineeGuida Progettazione IF SID - 5.21/C8 - 2020)
+-->
+<xs:schema xmlns:q15="http://xsd.telecomitalia.it/Schema/Common/CType_Sid" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xsd.telecomitalia.it/Schema/Common/CType_Sid" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.21">
+	<xs:complexType name="Header_Order_Type">
+		<xs:sequence>
+			<xs:element name="businessID" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="messageID" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="destinationSystem" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="sourceSystem" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="transactionID" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="returnCodeDescription" type="xs:string" minOccurs="0"/>
+			<xs:element name="returnCode" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="messageCode" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="messageType" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="interactionDate" type="q15:DATE_TIME" minOccurs="0"/>
+			<xs:element name="commandCategory" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="ContextProperty" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="name" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="value" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="commandDescription" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="scope" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="requestSourceSystem" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="adjustment" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="causeCode" type="q15:Stringa_255_Char" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ProductOrder_Type">
+		<xs:sequence>
+			<xs:element name="purchaseOrderNumber" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="interactionDate" type="q15:DATE_TIME" minOccurs="0"/>
+			<xs:element name="dueDate" type="q15:DATE_TIME" minOccurs="0"/>
+			<xs:element name="interactionStatus" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="MasterCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="PartyInteractionRole" type="q15:PartyInteractionRole_Type" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ProductOrderItem" type="q15:ProductOrderItem_Type" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="BusinessInteractionRelationship" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Agreement" type="q15:Agreement_Type" minOccurs="0"/>
+						<xs:element name="OldAgreement" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Agreement" type="q15:Agreement_Type" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AgreementRelationship" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Agreement" type="q15:Agreement_Type" minOccurs="0"/>
+						<xs:element name="OldAgreement" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Agreement" type="q15:Agreement_Type" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="orderType" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="shippingCharges" type="xs:string" minOccurs="0"/>
+			<xs:element name="workDate" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="RequiredAppointment" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="waybillCode" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="salesCampaignId" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="Action" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="orderCode" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="InteractionToInteractionRelationship" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Issue" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ID" type="q15:Stringa_255_Char" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="InteractionStatus" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RelatedInteraction" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="relationType" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="ID" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="purchaseOrderNumber" type="q15:Stringa_255_Char" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="hasDepositAccount" type="xs:string" minOccurs="0"/>
+			<xs:element name="storageUnit" type="xs:string" minOccurs="0"/>
+			<xs:element name="intelligentPostman" type="xs:string" minOccurs="0"/>
+			<xs:element name="SIMAmount" type="xs:string" minOccurs="0"/>
+			<xs:element name="orderGroupType" type="xs:string" minOccurs="0"/>
+			<xs:element name="sendSMS" type="xs:string" minOccurs="0"/>
+			<xs:element name="automaticActivationChannel" type="xs:string" minOccurs="0"/>
+			<xs:element name="isMigration" type="xs:string" minOccurs="0"/>
+			<xs:element name="OrderNumDBSS" type="xs:string" minOccurs="0"/>
+			<xs:element name="isCRPM" type="xs:string" minOccurs="0"/>
+			<xs:element name="isReverseCharge" type="xs:string" minOccurs="0"/>
+			<xs:element name="sapOrderType" type="xs:string" minOccurs="0"/>
+			<xs:element name="invoiceNotes" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ProductOrderItem_Type">
+		<xs:sequence>
+			<xs:element name="ProductComponent" type="q15:ProductComponent_Type" minOccurs="0"/>
+			<xs:element name="OldProductComponent" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ProductComponent" type="q15:ProductComponent_Type" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="InteractionStatus" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RelatedInteraction" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="relationType" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="ID" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="purchaseOrderNumber" type="q15:Stringa_255_Char" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Info_Type">
+		<xs:attribute name="version" type="xs:string" default="1000"/>
+	</xs:complexType>
+	<xs:complexType name="ProductReferences_Type">
+		<xs:sequence>
+			<xs:element name="InteractionStatus" type="q15:InteractionStatus_Type" minOccurs="0"/>
+			<xs:element name="Service" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ServiceCharacteristic" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="name" type="xs:string" minOccurs="0"/>
+									<xs:element name="value" type="xs:string" minOccurs="0"/>
+									<xs:element name="InteractionStatus" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="action" type="xs:string" minOccurs="0"/>
+												<xs:element name="isEvolution" type="xs:string" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="ResourceForService" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="SIM" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="ICCID" type="xs:string" minOccurs="0"/>
+												<xs:element name="IMSI" minOccurs="0">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="number" type="xs:string" minOccurs="0"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="type" type="xs:string" minOccurs="0"/>
+												<xs:element name="ResourceReferences" minOccurs="0">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="HLR" minOccurs="0">
+																<xs:complexType>
+																	<xs:sequence>
+																		<xs:element name="ID" type="xs:string" minOccurs="0"/>
+																	</xs:sequence>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="MSISDN" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="number" type="xs:string" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="OldSIM" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="IMSI" minOccurs="0">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="number" type="xs:string" minOccurs="0"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="ICCID" type="xs:string" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="OldMSISDN" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="number" type="xs:string" minOccurs="0"/>
+												<xs:element name="IMSI" minOccurs="0">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="number" type="xs:string" minOccurs="0"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="ICCID" type="xs:string" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="NumericAddress" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="isNatural" type="xs:string" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="AdditionalResource" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="NumericAddress" minOccurs="0">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="shortNumber" type="q15:Stringa_255_Char" minOccurs="0"/>
+															<xs:element name="prefix" type="q15:Stringa_255_Char" minOccurs="0"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="PhysicalConnector" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="typeOfConnector" type="q15:Stringa_255_Char" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="BillingAccountBelongsTo" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="GenericName" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="name" type="xs:string" minOccurs="0"/>
+												<xs:element name="givenNames" type="xs:string" minOccurs="0"/>
+												<xs:element name="familyNames" type="xs:string" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="territorialOrganization" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="CFA" type="xs:string" minOccurs="0"/>
+						<xs:element name="accountStatus" type="xs:string" minOccurs="0"/>
+						<xs:element name="accountType" type="xs:string" minOccurs="0"/>
+						<xs:element name="PaymentMethod" type="q15:PaymentMethod_Type" minOccurs="0"/>
+						<xs:element name="paymentMethodReason" type="xs:string" minOccurs="0"/>
+						<xs:element name="CustomerBill" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="maximumAllowedPaymentTime" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="CustomerBillOption" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="name" type="xs:string" minOccurs="0"/>
+									<xs:element name="value" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="CustomerAccountContact" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="contactType" type="xs:string" minOccurs="0"/>
+									<xs:element name="ContactMedium" type="q15:ContactMedium_Type" minOccurs="0"/>
+									<xs:element name="GenericName" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="name" type="xs:string" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="ServiceReferences" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Service" type="q15:Service_type" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="InteractionStatus" type="q15:InteractionStatus_Type" minOccurs="0"/>
+						<xs:element name="validFor" type="q15:validFor_type" minOccurs="0"/>
+						<xs:element name="FiscalTreatment" type="q15:FiscalTreatment_Type" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="CustomerPosseses" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="PartyRoleType" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="name" type="xs:string" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="fiscalTreatmentCode" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="PartyRoleProductInvolvement" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ContactMendium" type="q15:ContactMedium_Type" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OldServiceCharacteristic" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ServiceCharacteristic" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="value" type="xs:string" minOccurs="0"/>
+												<xs:element name="name" type="xs:string" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="NumberPortabilityCommand" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="PartyInteractionRole" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="OLO" minOccurs="0">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="Service" minOccurs="0">
+																<xs:complexType>
+																	<xs:sequence>
+																		<xs:element name="ResourceForService" minOccurs="0">
+																			<xs:complexType>
+																				<xs:sequence>
+																					<xs:element name="SIM" minOccurs="0">
+																						<xs:complexType>
+																							<xs:sequence>
+																								<xs:element name="ICCID" type="xs:string" minOccurs="0"/>
+																							</xs:sequence>
+																						</xs:complexType>
+																					</xs:element>
+																				</xs:sequence>
+																			</xs:complexType>
+																		</xs:element>
+																	</xs:sequence>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="requiresCreditTransfer" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="CustomerAccount" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="accountType" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="ThresholdInfo" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="thrVolume" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="noPaper" type="xs:string" minOccurs="0"/>
+						<xs:element name="noPaperEmail" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ProductComponent" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="productStatus" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="serviceNature" type="xs:string" minOccurs="0"/>
+			<xs:element name="category" type="xs:string" minOccurs="0"/>
+			<xs:element name="validFor" type="q15:validFor_type" minOccurs="0"/>
+			<xs:element name="dueDate" type="q15:dueDate_type" minOccurs="0"/>
+			<xs:element name="id" type="xs:string" minOccurs="0"/>
+			<xs:element name="billingCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="Resource" type="q15:Resource_Type" minOccurs="0"/>
+			<xs:element name="ProductCharacteristic" type="q15:ProductCharacteristic_Type" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="DiscountProductPriceAlteration" type="q15:DiscountProductPriceAlteration_Type" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ProductPrice" type="q15:ProductPrice_Type" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ProductInvolves" type="q15:ProductInvolves_type" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="CustomerAccountProductInvolvement" type="q15:BillingAccount_Type" minOccurs="0"/>
+			<xs:element name="description" type="xs:string" minOccurs="0"/>
+			<xs:element name="ProdOfferDescribes" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ProductOffering" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ProdOfferingAvailableIn" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="GeographicAddress" type="q15:GeographicAddress_Type" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="productStatus" type="xs:string" minOccurs="0"/>
+			<xs:element name="PartyRoleProductInvolvement" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ContactMedium" type="q15:ContactMedium_Type" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="rejectCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="productStructure" type="xs:string" minOccurs="0"/>
+			<xs:element name="employeeFeePercentage" type="xs:string" minOccurs="0"/>
+			<xs:element name="recuperoScontoflg" type="xs:string" minOccurs="0"/>
+			<xs:element name="canoneNoPromo" type="xs:string" minOccurs="0"/>
+			<xs:element name="canonePromo" type="xs:string" minOccurs="0"/>
+			<xs:element name="periodoPromo" type="xs:string" minOccurs="0"/>
+			<xs:element name="durataCalcoloPenale" type="xs:string" minOccurs="0"/>
+			<xs:element name="modificaPenale" type="xs:string" minOccurs="0"/>
+			<xs:element name="DurataLockIn" type="xs:string" minOccurs="0"/>
+			<xs:element name="LockIn" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ProductInvolves_type">
+		<xs:sequence>
+			<xs:element name="InteractionStatus" type="q15:InteractionStatus_Type" minOccurs="0"/>
+			<xs:element name="category" type="xs:string" minOccurs="0"/>
+			<xs:element name="description" type="xs:string" minOccurs="0"/>
+			<xs:element name="ID" type="xs:string" minOccurs="0"/>
+			<xs:element name="productStatus" type="xs:string" minOccurs="0"/>
+			<xs:element name="billingCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="ProductCharacteristic" type="q15:ProductCharacteristic_Type" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ProductPrice" type="q15:ProductPrice_Type" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Service" type="q15:Service_type" minOccurs="0"/>
+			<xs:element name="DiscountProductPriceAlteration" type="q15:DiscountProductPriceAlteration_Type" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="serviceNature" type="xs:string" minOccurs="0"/>
+			<xs:element name="validFor" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="endDateTime" type="q15:DATE_TIME" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="minThreshold" type="xs:string" minOccurs="0"/>
+			<xs:element name="maxThreshold" type="xs:string" minOccurs="0"/>
+			<xs:element name="discount" type="xs:string" minOccurs="0"/>
+			<xs:element name="discountType" type="xs:string" minOccurs="0"/>
+			<xs:element name="Agreement" type="q15:Agreement_Type" minOccurs="0"/>
+			<xs:element name="ProductValuedByPrice" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Discount" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="discountType" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Resource" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="NMU" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="priceRuleConditionType" type="xs:string" minOccurs="0"/>
+			<xs:element name="rejectCode" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FrameWorkAgreement_Type">
+		<xs:sequence>
+			<xs:element name="agreementDocumentNumber" type="xs:string" minOccurs="0"/>
+			<xs:element name="name" type="xs:string" minOccurs="0"/>
+			<xs:element name="version" type="xs:string" minOccurs="0"/>
+			<xs:element name="type" type="xs:string" minOccurs="0"/>
+			<xs:element name="AgreementPeriod" type="q15:AgreementPeriod_Type" minOccurs="0"/>
+			<xs:element name="status" type="xs:string" minOccurs="0"/>
+			<xs:element name="AgreementItem" type="q15:AgreementItem_Type" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="AgreementOption" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="name" type="xs:string" minOccurs="0"/>
+						<xs:element name="value" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AgreementTermOrCodition" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Discount" type="q15:Discount_Type" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="Penalty" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="amount" type="xs:string" minOccurs="0"/>
+									<xs:element name="action" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Agreement" type="q15:Agreement_Type" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ParrtyInteractionRole" type="q15:PartyInteractionRole_Type" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="InteractionStatus" type="q15:InteractionStatus_Type" minOccurs="0"/>
+			<xs:element name="validFor" type="q15:validFor_type" minOccurs="0"/>
+			<xs:element name="ConsistOf" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Agreement" type="q15:Agreement_Type" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="oldAggreementPeriod" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="agreementPeriod" type="q15:AgreementPeriod_Type" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="renewalType" type="xs:string" minOccurs="0"/>
+			<xs:element name="scope" type="xs:string" minOccurs="0"/>
+			<xs:element name="AgreementCompensation" type="q15:AgreementCompensation_Type" minOccurs="0"/>
+			<xs:element name="AgreementReferences" type="q15:AgreementReferences_Type" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AgreementCompensation_Type">
+		<xs:sequence>
+			<xs:element name="meseInizioCalcolo" type="xs:string" minOccurs="0"/>
+			<xs:element name="numeroMesi" type="xs:string" minOccurs="0"/>
+			<xs:element name="sogliaTolleranza" type="xs:string" minOccurs="0"/>
+			<xs:element name="tipoCompensazione" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AgreementReferences_Type">
+		<xs:sequence>
+			<xs:element name="codiceServizio" type="xs:string" minOccurs="0"/>
+			<xs:element name="tipoServizio" type="xs:string" minOccurs="0"/>
+			<xs:element name="dataAttivazioneCompRiadeg" type="xs:string" minOccurs="0"/>
+			<xs:element name="flagAssociazione" type="xs:string" minOccurs="0"/>
+			<xs:element name="pricingOverFranchigia" type="xs:string" minOccurs="0"/>
+			<xs:element name="dataCessazioneCompRiadeg" type="xs:string" minOccurs="0"/>
+			<xs:element name="tariffaRiadegRialzo" type="xs:string" minOccurs="0"/>
+			<xs:element name="tariffaRiadegRibasso" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="InteractionStatus_Type">
+		<xs:sequence>
+			<xs:element name="firstAttivationDate" type="q15:DATE_TIME" minOccurs="0"/>
+			<xs:element name="interactionDate" type="q15:DATE_TIME" minOccurs="0"/>
+			<xs:element name="quantity" type="xs:string" minOccurs="0"/>
+			<xs:element name="commandCategory" type="xs:string" minOccurs="0"/>
+			<xs:element name="returnCodeDescription" type="xs:string" minOccurs="0"/>
+			<xs:element name="returnCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="command" type="xs:string" minOccurs="0"/>
+			<xs:element name="commandDescription" type="xs:string" minOccurs="0"/>
+			<xs:element name="id" type="xs:string" minOccurs="0"/>
+			<xs:element name="action" type="xs:string" minOccurs="0"/>
+			<xs:element name="serviceClass" type="xs:string" minOccurs="0"/>
+			<xs:element name="serviceClassDescription" type="xs:string" minOccurs="0"/>
+			<xs:element name="requiresLogistics" type="xs:string" minOccurs="0"/>
+			<xs:element name="propaedeutic" type="xs:string" minOccurs="0"/>
+			<xs:element name="RelatedProductComponent" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="relationType" type="xs:string" minOccurs="0"/>
+						<xs:element name="InteractionStatus" type="q15:InteractionStatus_Type" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="serviceNature" type="xs:string" minOccurs="0"/>
+			<xs:element name="NPCommandCategory" type="xs:string" minOccurs="0"/>
+			<xs:element name="RelatedInteraction" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ID" type="xs:string" minOccurs="0"/>
+						<xs:element name="relationType" type="xs:string" minOccurs="0"/>
+						<xs:element name="aggregationCode" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="dueDate" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="interactionDate" type="q15:DATE_TIME" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="category" type="xs:string" minOccurs="0"/>
+			<xs:element name="priority" type="xs:string" minOccurs="0"/>
+			<xs:element name="ID" type="xs:string" minOccurs="0"/>
+			<xs:element name="Service" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ResourceForService" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="MSISDN" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="number" type="xs:string" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="automaticAck" type="xs:string" minOccurs="0"/>
+			<xs:element name="commandCategoryStatus" type="xs:string" minOccurs="0"/>
+			<xs:element name="statusCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="codeCommandCategoryStatus" type="xs:string" minOccurs="0"/>
+			<xs:element name="renewalType" type="xs:string" minOccurs="0"/>
+			<xs:element name="scope" type="xs:string" minOccurs="0"/>
+			<xs:element name="codeCommandCategory" type="xs:string" minOccurs="0"/>
+			<xs:element name="issueDate" type="q15:DATE_TIME" minOccurs="0"/>
+			<xs:element name="aggregationCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="requiresFM" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="description" type="xs:string" minOccurs="0"/>
+			<xs:element name="requiresOLP" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="isEvolution" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="version" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="serviceSubClass" type="xs:string" minOccurs="0"/>
+			<xs:element name="requiresSynchronism" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="requiresBlock" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="messageSubCategory" type="xs:string" minOccurs="0"/>
+			<xs:element name="NP" type="xs:string" minOccurs="0"/>
+			<xs:element name="CTU" type="xs:string" minOccurs="0"/>
+			<xs:element name="queuePosition" type="xs:string" minOccurs="0"/>
+			<xs:element name="queueLength" type="xs:string" minOccurs="0"/>
+			<xs:element name="webName" type="xs:string" minOccurs="0"/>
+			<xs:element name="domiciliationBonus" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Customer_Type">
+		<xs:sequence>
+			<xs:element name="ID" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="Organization" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="type" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="typeDescription" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="OrganizationIdentification" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="CCIAAIdentification" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="issuer" type="q15:Stringa_255_Char" minOccurs="0"/>
+												<xs:element name="CCIAANumber" type="xs:string" minOccurs="0"/>
+												<xs:element name="issueDate" type="q15:DATE_TIME" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="TRIIdentification" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="issuer" type="xs:string" minOccurs="0"/>
+												<xs:element name="issueDate" type="q15:DATE_TIME" minOccurs="0"/>
+												<xs:element name="number" type="xs:string" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="VATIdentification" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="VATNumber" type="q15:Stringa_255_Char" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OrganizationName" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="tradingName" type="xs:string" minOccurs="0"/>
+									<xs:element name="typeCode" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="holdingRole" type="xs:string" minOccurs="0"/>
+						<xs:element name="isCostCenter" type="xs:string" minOccurs="0"/>
+						<xs:element name="CountryOfRegisteredOffice" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="city" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="name" type="q15:Stringa_255_Char" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Individual" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="IndividualIdentification" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="FiscalCodeIdentification" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="fiscalCode" type="q15:Stringa_255_Char" minOccurs="0"/>
+												<xs:element name="status" type="xs:string" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="IndividualName" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="givenNames" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="familyNames" type="q15:Stringa_255_Char" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="gender" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="aliveDuring" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="startDateTime" type="q15:DATE_TIME" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="placeOfBirth" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="CountryOfBirth" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="name" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="ISTATCityCode" type="xs:string" minOccurs="0"/>
+									<xs:element name="ISTATProvinceCode" type="xs:string" minOccurs="0"/>
+									<xs:element name="countryCode" type="xs:string" minOccurs="0"/>
+									<xs:element name="publicRegCityCode" type="xs:string" minOccurs="0"/>
+									<xs:element name="provinceName" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="ACLI-ISTATCityCode" type="xs:string" minOccurs="0"/>
+									<xs:element name="ACLI-ISTATProvinceCode" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="isForeignBorn" type="q15:Stringa_255_Char" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="territorialOrganization" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="partyType" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="MarketSegment" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="name" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="SubMarketSegment" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="name" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="ID" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="marketSegmentCategory" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="ID" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="CaringSubMarketSegment" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="name" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="ID" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="marketSegmentCategory" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="CaringMarketSegment" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="marketSegmentCategory" type="xs:string" minOccurs="0"/>
+									<xs:element name="ID" type="xs:string" minOccurs="0"/>
+									<xs:element name="name" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="marketSegmentCategory" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CustomerAuthorization" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="mobilePrivacyAuthorization" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="fixedPrivacyAuthorization" type="q15:Stringa_255_Char" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="HasPartyRole" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Employee" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="partyRoleId" type="q15:Stringa_255_Char" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CustomerCreditProfile" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ID" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="paymentCode" type="q15:Stringa_255_Char" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="InvolvedPartyRoles" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Vendor" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="partyRoleId" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="commercialOrganization" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Referee" type="q15:Referee_Type" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="associationType" type="xs:string" minOccurs="0"/>
+						<xs:element name="SalesOperator" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="validFor" type="q15:validFor_type" minOccurs="0"/>
+									<xs:element name="id" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="validFor" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="startDateTime" type="q15:DATE_TIME" minOccurs="0"/>
+									<xs:element name="endDateTime" type="q15:DATE_TIME" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="scope" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="ValueNetworkGroup" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="code" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="name" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="Vendor" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="type" type="q15:Stringa_255_Char" minOccurs="0"/>
+												<xs:element name="Individual" minOccurs="0">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="IndividualName" minOccurs="0">
+																<xs:complexType>
+																	<xs:sequence>
+																		<xs:element name="givenNames" type="q15:Stringa_255_Char" minOccurs="0"/>
+																		<xs:element name="familyNames" type="q15:Stringa_255_Char" minOccurs="0"/>
+																	</xs:sequence>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="ContactMedium" type="q15:ContactMedium_Type" minOccurs="0"/>
+												<xs:element name="lastModificationDate" type="q15:DATE_TIME" minOccurs="0"/>
+												<xs:element name="VendorDivision" minOccurs="0">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="name" type="xs:string" minOccurs="0"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="channelCode" type="xs:string" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PartyRoleType" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Exporter" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="statementOfIntentId" type="xs:string" minOccurs="0"/>
+									<xs:element name="statementOfIntentDate" type="q15:DATE_TIME" minOccurs="0"/>
+									<xs:element name="taxBreaksThreshold" type="xs:string" minOccurs="0"/>
+									<xs:element name="validFor" type="q15:validFor_type" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="name" type="xs:string" minOccurs="0"/>
+						<xs:element name="Editor" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="RNSId" type="xs:string" minOccurs="0"/>
+									<xs:element name="saleesProceedsYear" type="xs:string" minOccurs="0"/>
+									<xs:element name="salesProceedsYear" type="xs:string" minOccurs="0"/>
+									<xs:element name="taxBreaksAllocation" type="xs:string" minOccurs="0"/>
+									<xs:element name="validFor" type="q15:validFor_type" minOccurs="0"/>
+									<xs:element name="RNSSubscriptionDate" type="xs:string" minOccurs="0"/>
+									<xs:element name="headingType" type="xs:string" minOccurs="0"/>
+									<xs:element name="headingName" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="description" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="validFor" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="endDateTime" type="q15:DATE_TIME" minOccurs="0"/>
+						<xs:element name="type" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ContactMedium" type="q15:ContactMedium_Type" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="FiscalTreatment" type="q15:FiscalTreatment_Type" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="IndividualIdentification" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="NationalIdentity" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="CardIdentification" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="issueDate" type="q15:DATE_TIME" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="issuerName" type="xs:string" minOccurs="0"/>
+						<xs:element name="NationalIdentityCardIdentification" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="cardNr" type="xs:string" minOccurs="0"/>
+									<xs:element name="issueDate" type="q15:DATE_TIME" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="DriversLicenseIdentification" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="licenseNr" type="xs:string" minOccurs="0"/>
+									<xs:element name="issueDate" type="q15:DATE_TIME" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="PassportIdentification" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="licenseNr" type="xs:string" minOccurs="0"/>
+									<xs:element name="issueDate" type="q15:DATE_TIME" minOccurs="0"/>
+									<xs:element name="passportNumber" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="issueName" type="xs:string" minOccurs="0"/>
+						<xs:element name="FiscalCodeIdentification" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="status" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="fiscalClassification" type="q15:Stinga_30_Char" minOccurs="0"/>
+			<xs:element name="GenericName" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="name" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PartyInteractionRole" type="q15:PartyInteractionRole_Type" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="accountingClassification" type="xs:string" minOccurs="0"/>
+			<xs:element name="Agreement" type="q15:Agreement_Type" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="wirelineOT" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="lastModificationDate" type="q15:DATE_TIME" minOccurs="0"/>
+			<xs:element name="ISTATActivityCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="socialOrReserved" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="ISTATActivityDescription" type="xs:string" minOccurs="0"/>
+			<xs:element name="conventionType" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="CustomerAccount" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ID" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="electronicInvoicePA" type="xs:string" minOccurs="0"/>
+						<xs:element name="electronicInvoicePAValidityDate" type="xs:string" minOccurs="0"/>
+						<xs:element name="typePA" type="xs:string" minOccurs="0"/>
+						<xs:element name="caratterizzazioneCliente" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="InteractionStatus" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="keyField" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ProductOffering" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="isTAFActive" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="isSplitPayment" type="q15:Stringa_1_Char" minOccurs="0"/>
+			<xs:element name="customerActivationDate" type="q15:DATE_TIME" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="validFor_type">
+		<xs:sequence>
+			<xs:element name="endDateTime" type="q15:DATE_TIME" minOccurs="0"/>
+			<xs:element name="startDateTime" type="q15:DATE_TIME" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="dueDate_type">
+		<xs:sequence>
+			<xs:element name="interactionDate" type="q15:DATE_TIME" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BillingAccount_Type">
+		<xs:sequence>
+			<xs:element name="BillingAccountBelongsTo" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="GenericName" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="name" type="xs:string" minOccurs="0"/>
+									<xs:element name="givenNames" type="xs:string" minOccurs="0"/>
+									<xs:element name="familyNames" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="territorialOrganization" type="xs:string" minOccurs="0"/>
+						<xs:element name="DRCode" type="q15:Stringa_255_Char" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CFA" type="xs:string" minOccurs="0"/>
+			<xs:element name="accountStatus" type="xs:string" minOccurs="0"/>
+			<xs:element name="accountType" type="xs:string" minOccurs="0"/>
+			<xs:element name="PaymentMethod" type="q15:PaymentMethod_Type" minOccurs="0"/>
+			<xs:element name="paymentMethodReason" type="xs:string" minOccurs="0"/>
+			<xs:element name="CustomerBill" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="maximumAllowedPaymentTime" type="xs:string" minOccurs="0"/>
+						<xs:element name="IRP" type="q15:Stringa_255_Char" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CustomerBillOption" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="name" type="xs:string" minOccurs="0"/>
+						<xs:element name="value" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CustomerAccountContact" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="contactType" type="xs:string" minOccurs="0"/>
+						<xs:element name="ContactMedium" type="q15:ContactMedium_Type" minOccurs="0"/>
+						<xs:element name="GenericName" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="name" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Individual" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="IndividualIdentification" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="FiscalCodeIdentification" minOccurs="0">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="fiscalCode" type="q15:Stringa_255_Char" minOccurs="0"/>
+															<xs:element name="status" type="xs:string" minOccurs="0"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="IndividualName" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="givenNames" type="q15:Stringa_255_Char" minOccurs="0"/>
+												<xs:element name="familyNames" type="q15:Stringa_255_Char" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="gender" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="aliveDuring" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="startDateTime" type="q15:DATE_TIME" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="placeOfBirth" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="CountryOfBirth" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="name" type="q15:Stringa_255_Char" minOccurs="0"/>
+												<xs:element name="ISTATCityCode" type="xs:string" minOccurs="0"/>
+												<xs:element name="ISTATProvinceCode" type="xs:string" minOccurs="0"/>
+												<xs:element name="countryCode" type="xs:string" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="isForeignBorn" type="q15:Stringa_255_Char" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="AGCode" type="q15:Stringa_255_Char" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="InteractionStatus" type="q15:InteractionStatus_Type" minOccurs="0"/>
+			<xs:element name="CustomerPosseses" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="PartyRoleType" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="name" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="validFor" type="q15:validFor_type" minOccurs="0"/>
+			<xs:element name="ResourceForService" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence minOccurs="0">
+						<xs:element name="WirelineNetwork" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence minOccurs="0">
+									<xs:element name="type" type="xs:string" minOccurs="0"/>
+									<xs:element name="ResourceReferences" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence minOccurs="0">
+												<xs:element name="NumericAddress" minOccurs="0">
+													<xs:complexType>
+														<xs:sequence minOccurs="0">
+															<xs:element name="Number" type="q15:Stringa_255_Char" minOccurs="0"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="billingType" type="xs:string" minOccurs="0"/>
+			<xs:element name="BillingGovernment" type="q15:BillingGovernment_Type" minOccurs="0"/>
+			<xs:element name="CIG" type="xs:string" minOccurs="0"/>
+			<xs:element name="CUP" type="xs:string" minOccurs="0"/>
+			<xs:element name="ODA" type="xs:string" minOccurs="0"/>
+			<xs:element name="officeCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="noPaper" type="xs:string" minOccurs="0"/>
+			<xs:element name="noPaperEmail" type="xs:string" minOccurs="0"/>
+			<xs:element name="codiceDestinatario" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Resource_Type">
+		<xs:sequence>
+			<xs:element name="GSMPhone" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="IMEI" type="xs:string" minOccurs="0"/>
+						<xs:element name="SerialNumber" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="NMU" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ProductCharacteristic_Type">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" minOccurs="0"/>
+			<xs:element name="value" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DiscountProductPriceAlteration_Type">
+		<xs:sequence>
+			<xs:element name="priceType" type="xs:string" minOccurs="0"/>
+			<xs:element name="value" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ProductPrice_Type">
+		<xs:sequence>
+			<xs:element name="priceType" type="xs:string" minOccurs="0"/>
+			<xs:element name="price" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="amount" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="validFor" type="q15:validFor_type" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Agreement_Type">
+		<xs:sequence>
+			<xs:element name="agreementDocumentNumber" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="interactionDate" type="q15:DATE_TIME" minOccurs="0"/>
+			<xs:element name="AgreementApproval" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="AgreementAuthorization" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="agreementAutorizationState" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="PartyRoleInteractionType" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="Referee" type="q15:Referee_Type" minOccurs="0" maxOccurs="unbounded"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="interactionDate" type="q15:DATE_TIME" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="isPublishing" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="AgreementOption" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="name" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="value" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="validFor" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="endDateTime" type="q15:DATE_TIME" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AgreementPeriod" type="q15:AgreementPeriod_Type" minOccurs="0"/>
+			<xs:element name="AgreementItem" type="q15:AgreementItem_Type" minOccurs="0"/>
+			<xs:element name="FrameworkAgreement" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="agreementDocumentNumber" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="name" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="agreementPeriod" type="q15:AgreementPeriod_Type" minOccurs="0"/>
+						<xs:element name="PartyInteractionRole" type="q15:PartyInteractionRole_Type" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="AgreementItem" type="q15:AgreementItem_Type" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Publishing" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="validFor" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="startDateTime" type="q15:DATE_TIME" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AgreementTermOrCondition" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Discount" type="q15:Discount_Type" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="Penalty" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="amount" type="xs:string" minOccurs="0"/>
+									<xs:element name="action" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Contribution" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="id" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="InteractionStatus" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="action" type="q15:Stringa_255_Char" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="validFor" type="q15:validFor_type" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PartyInteractionRole" type="q15:PartyInteractionRole_Type" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="BusinessInteractionInvolves" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="BillingAccount" type="q15:BillingAccount_Type" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="BillingAccount" type="q15:BillingAccount_Type" minOccurs="0"/>
+			<xs:element name="InteractionStatus" type="q15:InteractionStatus_Type" minOccurs="0"/>
+			<xs:element name="scope" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="ProductOffering" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="id" type="xs:string" minOccurs="0"/>
+						<xs:element name="name" type="xs:string" minOccurs="0"/>
+						<xs:element name="validFor" type="q15:validFor_type" minOccurs="0"/>
+						<xs:element name="pricingCategory" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="renewalDate" type="q15:DATE_TIME" minOccurs="0"/>
+						<xs:element name="duration" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="action" type="xs:string" minOccurs="0"/>
+						<xs:element name="ComprisedOf" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="name" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="id" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="action" type="xs:string" minOccurs="0"/>
+									<xs:element name="validFor" type="q15:validFor_type" minOccurs="0"/>
+									<xs:element name="ProdOfferingCharacteristic" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="name" type="xs:string" minOccurs="0"/>
+												<xs:element name="value" type="xs:string" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="ResourceForOffering" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="NumericAddress" type="q15:NumericAddress_Type" minOccurs="0"/>
+									<xs:element name="action" type="xs:string" minOccurs="0"/>
+									<xs:element name="validFor" type="q15:validFor_type" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="isPublishingChanged" type="xs:string" minOccurs="0"/>
+			<xs:element name="agreementConventionType" type="xs:string" minOccurs="0"/>
+			<xs:element name="flagExporter" type="xs:string" minOccurs="0"/>
+			<xs:element name="flagExporterVariation" type="xs:string" minOccurs="0"/>
+			<xs:element name="monthsBeforeReplacement" type="xs:string" minOccurs="0"/>
+			<xs:element name="vatExemption" type="xs:string" minOccurs="0"/>
+			<xs:element name="BacId" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Referee_Type">
+		<xs:sequence>
+			<xs:element name="Individual" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="IndividualIdentification" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="FiscalCodeIdentification" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="fiscalCode" type="q15:Stringa_255_Char" minOccurs="0"/>
+												<xs:element name="status" type="xs:string" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="issuerName" type="xs:string" minOccurs="0"/>
+									<xs:element name="NationalIdentityCardIdentification" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="cardNr" type="xs:string" minOccurs="0"/>
+												<xs:element name="issueDate" type="q15:DATE_TIME" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="DriversLicenseIdentification" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="licenseNr" type="xs:string" minOccurs="0"/>
+												<xs:element name="issueDate" type="q15:DATE_TIME" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="PassportIdentification" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="passportNumber" type="xs:string" minOccurs="0"/>
+												<xs:element name="issueDate" type="q15:DATE_TIME" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="issueName" type="xs:string" minOccurs="0"/>
+									<xs:element name="NICHandleIdentification" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="NIC-HDL" type="q15:Stringa_255_Char" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="IndividualName" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="givenNames" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="familyNames" type="q15:Stringa_255_Char" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="aliveDuring" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="startDateTime" type="q15:DATE_TIME" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="placeOfBirth" type="xs:string" minOccurs="0"/>
+						<xs:element name="gender" type="xs:string" minOccurs="0"/>
+						<xs:element name="nationality" type="xs:string" minOccurs="0"/>
+						<xs:element name="CountryOfBirth" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="name" type="xs:string" minOccurs="0"/>
+									<xs:element name="publicRegCityCode" type="xs:string" minOccurs="0"/>
+									<xs:element name="country" type="xs:string" minOccurs="0"/>
+									<xs:element name="ACLI-ISTATCityCode" type="xs:string" minOccurs="0"/>
+									<xs:element name="ACLI-ISTATProvinceCode" type="xs:string" minOccurs="0"/>
+									<xs:element name="countryCode" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="stateOfBirth" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="stateCodeOfBirth" type="q15:Stringa_255_Char" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ContactMedium" type="q15:ContactMedium_Type" minOccurs="0"/>
+			<xs:element name="type" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="GenericName" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="name" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="action" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="fiscalClassification" type="xs:string" minOccurs="0"/>
+			<xs:element name="IndividualIdentification" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="FiscalCodeIdentification" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="fiscalCode" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="status" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="issuerName" type="xs:string" minOccurs="0"/>
+						<xs:element name="NationalIdentityCardIdentification" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="cardNr" type="xs:string" minOccurs="0"/>
+									<xs:element name="issueDate" type="q15:DATE_TIME" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="DriversLicenseIdentification" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="licenseNr" type="xs:string" minOccurs="0"/>
+									<xs:element name="issueDate" type="q15:DATE_TIME" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="PassportIdentification" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="passportNumber" type="xs:string" minOccurs="0"/>
+									<xs:element name="issueDate" type="q15:DATE_TIME" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="issueName" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="InteractionStatus" type="q15:InteractionStatus_Type" minOccurs="0"/>
+			<xs:element name="ID" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="formOfAddress" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="Organization" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="OrganizationName" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="tradingName" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OrganizationIdentification" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="VATIdentification" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="VATNumber" type="q15:Stringa_255_Char" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="CountryOfRegisteredOffice" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="city" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="name" type="q15:Stringa_255_Char" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="partyType" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="referentQualification" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SIM_Type">
+		<xs:sequence>
+			<xs:element name="ICCID" type="xs:string" minOccurs="0"/>
+			<xs:element name="IMSI" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="number" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ResourceReferences" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="HLR" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ID" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="MSISDN" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="number" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="type" type="xs:string" minOccurs="0"/>
+			<xs:element name="ICCIDCheckDigit" type="xs:string" minOccurs="0"/>
+			<xs:element name="digit" type="xs:string" minOccurs="0"/>
+			<xs:element name="PIN2" type="xs:string" minOccurs="0"/>
+			<xs:element name="PUK2" type="xs:string" minOccurs="0"/>
+			<xs:element name="supplier" type="xs:string" minOccurs="0"/>
+			<xs:element name="voltage" type="xs:string" minOccurs="0"/>
+			<xs:element name="memory" type="xs:string" minOccurs="0"/>
+			<xs:element name="application" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PaymentMethod_Type">
+		<xs:sequence>
+			<xs:element name="CreditCard" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="acquirer" type="xs:string" minOccurs="0"/>
+						<xs:element name="cardNumber" type="xs:string" minOccurs="0"/>
+						<xs:element name="expirationDate" type="q15:DATE_TIME" minOccurs="0"/>
+						<xs:element name="owner" type="xs:string" minOccurs="0"/>
+						<xs:element name="authorizationNumber" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ItalianBankAccount" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ABI" type="xs:string" minOccurs="0"/>
+						<xs:element name="CAB" type="xs:string" minOccurs="0"/>
+						<xs:element name="accountNumber" type="xs:string" minOccurs="0"/>
+						<xs:element name="IBAN" type="xs:string" minOccurs="0"/>
+						<xs:element name="owner" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Individual" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="IndividualIdentification" minOccurs="0">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="FiscalCodeIdentification" minOccurs="0">
+																<xs:complexType>
+																	<xs:sequence>
+																		<xs:element name="fiscalCode" type="xs:string" minOccurs="0"/>
+																	</xs:sequence>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="GenericName" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="name" type="xs:string" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="type" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Acceptance_Type">
+		<xs:sequence>
+			<xs:element name="i1" type="xs:string" minOccurs="0"/>
+			<xs:element name="p1" type="xs:string" minOccurs="0"/>
+			<xs:element name="i1Light" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="Stringa_25_Char">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="25"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Stringa_50_Char">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="50"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Stringa_80_Char">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="80"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DATE_TIME">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([1-9][8-9]|[2-9][0-9])[0-9]{2}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([0-1][0-9]|2[0-3]):([0-5][0-9]|60):([0-5][0-9]|60)"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Stringa_10_Char">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Stringa_11_Char">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="11"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Stringa_16_Char">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="16"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Stringa_1_Char">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Stinga_30_Char">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="30"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CAP_Num_5_char">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="5"/>
+			<xs:pattern value="([0-9][0-9][0-9][0-9][0-9])"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="TroubleTicket_Type">
+		<xs:sequence>
+			<xs:element name="id" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="PartyInteractionRole" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Customer" type="q15:CustomerLyteTrouble_Type" minOccurs="0"/>
+						<xs:element name="SalesOperator" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="login" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="Individual" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="IndividualIName" minOccurs="0">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="givenNames" type="q15:Stringa_255_Char" minOccurs="0"/>
+															<xs:element name="familyNames" type="q15:Stringa_255_Char" minOccurs="0"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Operator" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="channelCode" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="login" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="territorialOrganization" type="xs:string" minOccurs="0"/>
+									<xs:element name="contact" type="q15:Stringa_255_Char" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Referent" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="contact" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="Individual" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="IndividualIName" minOccurs="0">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="givenNames" type="q15:Stringa_255_Char" minOccurs="0"/>
+															<xs:element name="familyNames" type="q15:Stringa_255_Char" minOccurs="0"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="troubleCreationDate" type="q15:DATE_TIME" minOccurs="0"/>
+			<xs:element name="TroubleDetailInformation" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="name" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="value" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="troubleDetectionDate" type="q15:DATE_TIME" minOccurs="0"/>
+			<xs:element name="interactionDate" type="q15:DATE_TIME" minOccurs="0"/>
+			<xs:element name="troubleSendConfirmDate" type="q15:DATE_TIME" minOccurs="0"/>
+			<xs:element name="troubleDescription" type="xs:string" minOccurs="0"/>
+			<xs:element name="TroubleAssignment" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="TroubleTicketArea" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="system" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="name" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="supplierName" type="q15:Stringa_255_Char" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="isTroubleSolvingArea" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="validFor" type="q15:validFor_type" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="TroubleLocation" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="GeographicAddress" type="q15:GeographicAddress_Type" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="workingId" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="priority" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="troubleTicketSubState" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="troubleTicketState" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="TroubleTicketCategory" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="type" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="failType" type="q15:Stringa_255_Char" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="TroubleTicketStatistics" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="TroubleTicketAreaStatistics" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="StatisticsOnArea" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="name" type="q15:Stringa_255_Char" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="totalWorkingTime" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="numberOfBounces" type="q15:Stringa_255_Char" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="numberOfBounces" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="isMaxNumberOfBouncesReached" type="q15:Stringa_255_Char" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="transitionStatusDate" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="troubleResolutionDescription" type="xs:string" minOccurs="0"/>
+			<xs:element name="remedyId" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="TroubleTicketBounce" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="BounceTo" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="system" type="q15:Stringa_255_Char" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="BusinessInteractionRelationship" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Agreement" type="q15:Agreement_Type" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="NumeroOrdine" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="Attachment" type="q15:Attachment_Type" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Attachment_Type">
+		<xs:sequence>
+			<xs:element name="fileType" type="xs:string" minOccurs="0"/>
+			<xs:element name="fileName" type="xs:string" minOccurs="0"/>
+			<xs:element name="attach" type="xs:base64Binary" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CustomerLyteTrouble_Type">
+		<xs:sequence>
+			<xs:element name="CustomerPossesses" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="CustomerAccount" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="telephoneNumber" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="accountType" type="q15:Stringa_255_Char" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="PrepayedAccount" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="accountType" type="q15:Stringa_255_Char" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="MobilePhoneAccount" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="accountType" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="isPriorityTelephoneNumber" type="q15:Stringa_255_Char" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Organization" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="OrganizationName" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="tradingName" type="q15:Stringa_255_Char" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="IndividualIdentification" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="FiscalCodeIdentification" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="fiscalCode" type="q15:Stringa_255_Char" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="issuerName" type="q15:Stringa_255_Char" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="MarketSegment" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ID" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="marketSegmentSubCategory" type="q15:Stringa_255_Char" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="Stringa_12_Char">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="12"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Stringa_255_Char">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="255"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="ProductComponent_Type">
+		<xs:sequence>
+			<xs:element name="InteractionStatus" type="q15:InteractionStatus_Type" minOccurs="0"/>
+			<xs:element name="description" type="xs:string" minOccurs="0"/>
+			<xs:element name="Service" type="q15:Service_type" minOccurs="0"/>
+			<xs:element name="DiscountProductPriceAlteration" type="q15:DiscountProductPriceAlteration_Type" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ProductPrice" type="q15:ProductPrice_Type" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ProductCharacteristic" type="q15:ProductCharacteristic_Type" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Resource" type="q15:Resource_Type" minOccurs="0"/>
+			<xs:element name="ID" type="xs:string" minOccurs="0"/>
+			<xs:element name="productStatus" type="xs:string" minOccurs="0"/>
+			<xs:element name="dueDate" type="q15:dueDate_type" minOccurs="0"/>
+			<xs:element name="dueDate2" type="q15:DATE_TIME" minOccurs="0"/>
+			<xs:element name="CustomerAccountProductInvolvement" type="q15:CustomerAccountProductInvolvement_Type" minOccurs="0"/>
+			<xs:element name="billingCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="ProductInvolves" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="q15:ProductInvolves_type">
+							<xs:sequence>
+								<xs:element name="ProductInvolves" type="q15:ProductInvolves_type" minOccurs="0" maxOccurs="unbounded"/>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ProductReferences" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="q15:ProductReferences_Type">
+							<xs:sequence>
+								<xs:element name="ProductReferences" type="q15:ProductReferences_Type" minOccurs="0" maxOccurs="unbounded"/>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="category" type="xs:string" minOccurs="0"/>
+			<xs:element name="FiscalTreatment" type="q15:FiscalTreatment_Type" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="discountCategory" type="xs:string" minOccurs="0"/>
+			<xs:element name="discountType" type="xs:string" minOccurs="0"/>
+			<xs:element name="ProductValuedByPrice" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Discount" type="q15:Discount_Type" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="brand" type="xs:string" minOccurs="0"/>
+			<xs:element name="BusinessContract" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="contractCode" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="description" type="q15:Stringa_255_Char" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="note" type="xs:string" minOccurs="0"/>
+			<xs:element name="OldProductReferences" type="q15:ProductReferences_Type" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="RelatedInteraction" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="relationType" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="ID" type="q15:Stringa_255_Char" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AdministersService" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="OLO" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="type" type="q15:Stringa_255_Char" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="OldProductInvolves" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ProductInvolves" type="q15:ProductInvolves_type" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="acquisitionDate" type="q15:DATE_TIME" minOccurs="0"/>
+			<xs:element name="Acceptance" type="q15:Acceptance_Type" minOccurs="0"/>
+			<xs:element name="RatePlanSpecification" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="type" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="priceRuleConditionType" type="xs:string" minOccurs="0"/>
+			<xs:element name="rejectCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="logisticsFulfilled" type="xs:string" minOccurs="0"/>
+			<xs:element name="showBill" type="xs:string" minOccurs="0"/>
+			<xs:element name="identificativoCao" type="xs:string" minOccurs="0"/>
+			<xs:element name="DurataLockIn" type="xs:string" minOccurs="0"/>
+			<xs:element name="LockIn" type="xs:string" minOccurs="0"/>
+			<xs:element name="identificativoCas" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Service_type">
+		<xs:sequence>
+			<xs:element name="ServiceCharacteristic" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="name" type="xs:string" minOccurs="0"/>
+						<xs:element name="value" type="xs:string" minOccurs="0"/>
+						<xs:element name="InteractionStatus" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="action" type="xs:string" minOccurs="0"/>
+									<xs:element name="isEvolution" type="xs:string" minOccurs="0"/>
+									<xs:element name="ServiceClass" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ResourceForService" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="SIM" type="q15:SIM_Type" minOccurs="0"/>
+						<xs:element name="MSISDN" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="number" type="xs:string" minOccurs="0"/>
+									<xs:element name="serviceState" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OldSIM" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="SIM" type="q15:SIM_Type" minOccurs="0"/>
+									<xs:element name="MSISDN" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="number" type="xs:string" minOccurs="0"/>
+												<xs:element name="serviceState" type="xs:string" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="ResourceReferences" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="MSISDN" minOccurs="0">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="number" type="xs:string" minOccurs="0"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="ICCIDCheckDigit" type="xs:string" minOccurs="0"/>
+									<xs:element name="digit" type="xs:string" minOccurs="0"/>
+									<xs:element name="PIN2" type="xs:string" minOccurs="0"/>
+									<xs:element name="PUK2" type="xs:string" minOccurs="0"/>
+									<xs:element name="supplier" type="xs:string" minOccurs="0"/>
+									<xs:element name="voltage" type="xs:string" minOccurs="0"/>
+									<xs:element name="memory" type="xs:string" minOccurs="0"/>
+									<xs:element name="application" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OldMSISDN" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="MSISDN" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="number" type="xs:string" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="servicestate" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="NumericAddress" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="prefix" type="xs:string" minOccurs="0"/>
+									<xs:element name="shortNumber" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Switchboard" type="q15:Switchboard_Type" minOccurs="0"/>
+						<xs:element name="CustomerSite" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ID" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="description" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="SituatedAt" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="GeographicAddress" type="q15:GeographicAddress_Type" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="Exchange" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="classification" type="q15:Stringa_255_Char" minOccurs="0"/>
+												<xs:element name="code" type="q15:Stringa_255_Char" minOccurs="0"/>
+												<xs:element name="description" type="q15:Stringa_255_Char" minOccurs="0"/>
+												<xs:element name="isInULL" type="q15:Stringa_255_Char" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="DRCode" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="DRDescription" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="AGDescription" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="isOPA" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="UTCode" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="UTDescription" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="UTAbbreviation" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="certificationLevel" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="IDCustomerSite" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="ETDGroup" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="ETDCode" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="ETDDescription" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="requestNumber" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="exchanger" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="AGCode" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="customerSiteCode" type="xs:string" minOccurs="0"/>
+									<xs:element name="ADSLCityCode" type="xs:string" minOccurs="0"/>
+									<xs:element name="name" type="xs:string" minOccurs="0"/>
+									<xs:element name="central" type="xs:string" minOccurs="0"/>
+									<xs:element name="agency" type="xs:string" minOccurs="0"/>
+									<xs:element name="systemNr" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="WirelineNetwork" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ResourceReferences" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="NumericAddress" minOccurs="0">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="prefix" type="xs:string" minOccurs="0"/>
+															<xs:element name="shortNumber" type="xs:string" minOccurs="0"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="accessTypology" type="q15:Stringa_255_Char" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="AdditionalResource" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="NumericAddress" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="prefix" type="xs:string" minOccurs="0"/>
+												<xs:element name="shortNumber" type="xs:string" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OldNumericAddress" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="NumericAddress" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="prefix" type="xs:string" minOccurs="0"/>
+												<xs:element name="shortNumber" type="xs:string" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OldCustomerSite" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="CustomerSite" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="ID" type="q15:Stringa_255_Char" minOccurs="0"/>
+												<xs:element name="description" type="q15:Stringa_255_Char" minOccurs="0"/>
+												<xs:element name="Exchange" minOccurs="0">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="classification" type="q15:Stringa_255_Char" minOccurs="0"/>
+															<xs:element name="code" type="q15:Stringa_255_Char" minOccurs="0"/>
+															<xs:element name="description" type="q15:Stringa_255_Char" minOccurs="0"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="SituatedAt" minOccurs="0">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="GeographicAddress" type="q15:GeographicAddress_Type" minOccurs="0"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="ADSLCityCode" type="xs:string" minOccurs="0"/>
+												<xs:element name="DRCode" type="q15:Stringa_255_Char" minOccurs="0"/>
+												<xs:element name="DRDescription" type="q15:Stringa_255_Char" minOccurs="0"/>
+												<xs:element name="AGCode" type="q15:Stringa_255_Char" minOccurs="0"/>
+												<xs:element name="AGDescription" type="q15:Stringa_255_Char" minOccurs="0"/>
+												<xs:element name="isOPA" type="q15:Stringa_255_Char" minOccurs="0"/>
+												<xs:element name="UTCode" type="q15:Stringa_255_Char" minOccurs="0"/>
+												<xs:element name="UTDescription" type="q15:Stringa_255_Char" minOccurs="0"/>
+												<xs:element name="UTAbbreviation" type="q15:Stringa_255_Char" minOccurs="0"/>
+												<xs:element name="certificationLevel" type="q15:Stringa_255_Char" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="BillingResource" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="NumericAddress" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="prefix" type="xs:string" minOccurs="0"/>
+												<xs:element name="shortNumber" type="xs:string" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="PhysicalConnector" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="typeOfConnector" type="q15:Stringa_255_Char" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="isStolen" type="q15:Stringa_255_Char" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ServiceModificationsProductInvolvement" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ProductComponent" type="q15:ProductComponent_Type" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ServiceReferences" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ProductCharacteristic" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="name" type="xs:string" minOccurs="0"/>
+									<xs:element name="value" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ProductOfferingTerm" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Discount" type="q15:Discount_Type" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="InteractionStatus" type="q15:InteractionStatus_Type" minOccurs="0"/>
+			<xs:element name="directionality" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="bidirectionalAmount" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="outgoingAmount" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="ingoingAmount" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="additionalAmount" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="ServicePartyRole" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Referee" type="q15:Referee_Type" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="BusinessContract" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="contractCode" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="description" type="q15:Stringa_255_Char" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="OldServiceCharacteristic" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ServiceCharacteristic" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="value" type="xs:string" minOccurs="0"/>
+									<xs:element name="name" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="NumberPortabilityCommand" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="creditTransferDate" type="xs:string" minOccurs="0"/>
+						<xs:element name="PartyInteractionRole" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OLO" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="Service" minOccurs="0">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="ResourceForService" minOccurs="0">
+																<xs:complexType>
+																	<xs:sequence>
+																		<xs:element name="SIM" minOccurs="0">
+																			<xs:complexType>
+																				<xs:sequence>
+																					<xs:element name="ICCID" type="xs:string" minOccurs="0"/>
+																				</xs:sequence>
+																			</xs:complexType>
+																		</xs:element>
+																	</xs:sequence>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="requiresCreditTransfer" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CustomerAccount" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="accountType" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ThresholdInfo" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="thrVolume" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="Stringa_24_Char">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="24"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="GeographicAddress_Type">
+		<xs:sequence>
+			<xs:element name="city" type="xs:string" minOccurs="0"/>
+			<xs:element name="addressOrLocality" type="xs:string" minOccurs="0"/>
+			<xs:element name="country" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="stateOrProvince" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="contact" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="streetType" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="streetName" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="streetNrFirst" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="postCode" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="locality" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="ISTATCityCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="latitude" type="xs:string" minOccurs="0"/>
+			<xs:element name="longitude" type="xs:string" minOccurs="0"/>
+			<xs:element name="district" type="xs:string" minOccurs="0"/>
+			<xs:element name="ISTATProvinceCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="countryCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="regionalCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="publicRegCityCode" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="BDAStreetName" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="BDAStreetNrFirst" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="realStreetNrFirst" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="buildingName" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="levelType" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="levelNr" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="subUnitNr" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="provinceName" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="publicRegProvinceCode" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="ISTATStreetCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="streetTypeCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="ACLI-postCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="ACLI-ISTATCityCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="ACLI-ISTATProvinceCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="cityName" type="xs:string" minOccurs="0"/>
+			<xs:element name="note" type="xs:string" minOccurs="0"/>
+			<xs:element name="streetDescription" type="xs:string" minOccurs="0"/>
+			<xs:element name="failureAreaTipology" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AgreementPeriod_Type">
+		<xs:sequence>
+			<xs:element name="startDateTime" type="q15:DATE_TIME" minOccurs="0"/>
+			<xs:element name="duration" type="xs:string" minOccurs="0"/>
+			<xs:element name="endDateTime" type="q15:DATE_TIME" minOccurs="0"/>
+			<xs:element name="dueDate" type="q15:DATE_TIME" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AgreementItem_Type">
+		<xs:sequence>
+			<xs:element name="ProductOffering" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="id" type="xs:string" minOccurs="0"/>
+						<xs:element name="name" type="xs:string" minOccurs="0"/>
+						<xs:element name="validFor" type="q15:validFor_type" minOccurs="0"/>
+						<xs:element name="pricingCategory" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="renewalDate" type="q15:DATE_TIME" minOccurs="0"/>
+						<xs:element name="duration" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="action" type="xs:string" minOccurs="0"/>
+						<xs:element name="ComprisedOf" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="name" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="id" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="action" type="xs:string" minOccurs="0"/>
+									<xs:element name="validFor" type="q15:validFor_type" minOccurs="0"/>
+									<xs:element name="ProdOfferingCharacteristic" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="name" type="xs:string" minOccurs="0"/>
+												<xs:element name="value" type="xs:string" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="SimpleProdOfferingRelationship" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="ComprisedOf" minOccurs="0" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="name" type="q15:Stringa_255_Char" minOccurs="0"/>
+															<xs:element name="id" type="q15:Stringa_255_Char" minOccurs="0"/>
+															<xs:element name="action" type="q15:Stringa_255_Char" minOccurs="0"/>
+															<xs:element name="ProdOfferingCharacteristic" minOccurs="0" maxOccurs="unbounded">
+																<xs:complexType>
+																	<xs:sequence>
+																		<xs:element name="name" type="q15:Stringa_255_Char" minOccurs="0"/>
+																		<xs:element name="value" type="q15:Stringa_255_Char" minOccurs="0"/>
+																	</xs:sequence>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="ProdOfferingCharacteristic" minOccurs="0" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="name" type="q15:Stringa_255_Char" minOccurs="0"/>
+															<xs:element name="value" type="q15:Stringa_255_Char" minOccurs="0"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="hasGuideline" type="q15:Stringa_255_Char" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="ResourceForOffering" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="NumericAddress" type="q15:NumericAddress_Type" minOccurs="0"/>
+									<xs:element name="action" type="xs:string" minOccurs="0"/>
+									<xs:element name="validFor" type="q15:validFor_type" minOccurs="0"/>
+									<xs:element name="InteractionStatus" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="RelatedInteraction" minOccurs="0">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="relationType" type="q15:Stringa_255_Char" minOccurs="0"/>
+															<xs:element name="ID" type="q15:Stringa_255_Char" minOccurs="0"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="WirelineNetwork" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="accessTypology" type="q15:Stringa_255_Char" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="treaty" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="KTeam" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="ProductOfferingPrice" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="credit" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="price" type="q15:Stringa_255_Char" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="isMobile" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="ProductOfferingTerm" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="AgreementOption" minOccurs="0" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="name" type="q15:Stringa_255_Char" minOccurs="0"/>
+												<xs:element name="value" type="q15:Stringa_255_Char" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="Agreement" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="agreementDocumentNumber" type="q15:Stringa_255_Char" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="ProductOfferingRelationship" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="pricingCategory" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="id" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="name" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="validFor" type="q15:validFor_type" minOccurs="0"/>
+									<xs:element name="renewalDate" type="q15:DATE_TIME" minOccurs="0"/>
+									<xs:element name="duration" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="action" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="treaty" type="q15:Stringa_255_Char" minOccurs="0"/>
+									<xs:element name="KTeam" type="q15:Stringa_255_Char" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="status" type="xs:string" minOccurs="0"/>
+			<xs:element name="action" type="xs:string" minOccurs="0"/>
+			<xs:element name="validFor" type="q15:validFor_type" minOccurs="0"/>
+			<xs:element name="CustomerAccountInteractionRole" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="OldBillingAccount" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="BillingAccount" type="q15:BillingAccount_Type" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FiscalTreatment_Type">
+		<xs:sequence>
+			<xs:element name="ID" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="name" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="validFor" type="q15:validFor_type" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ContactMedium_Type">
+		<xs:sequence>
+			<xs:element name="TelephoneNumber" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="number" type="xs:string" minOccurs="0"/>
+						<xs:element name="type" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="type" type="xs:string" minOccurs="0"/>
+			<xs:element name="EmailContact" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="emailAddress" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Address" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="type" type="xs:string" minOccurs="0"/>
+						<xs:element name="GeographicAddress" type="q15:GeographicAddress_Type" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="DetailedTelephoneNumber" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="prefix" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="number" type="q15:Stringa_255_Char" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="FaxNumber" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="number" type="q15:Stringa_255_Char" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ItalianAddress" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="GeographicAddress" type="q15:GeographicAddress_Type" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PartyInteractionRole_Type">
+		<xs:sequence>
+			<xs:element name="DDUProtocol" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="SalesOperator" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="group" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="id" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="interactionRole" type="xs:string" minOccurs="0"/>
+						<xs:element name="position" type="xs:string" minOccurs="0"/>
+						<xs:element name="code" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Referee" type="q15:Referee_Type" minOccurs="0"/>
+			<xs:element name="Customer" type="q15:Customer_Type" minOccurs="0"/>
+			<xs:element name="OldCustomer" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Customer" type="q15:Customer_Type" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Operator" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="channelCode" type="q15:Stringa_255_Char" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="interactionRole" type="xs:string" minOccurs="0"/>
+			<xs:element name="DeliveryVector" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ID" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="deliveryNr" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="certifiedMailCode" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="interactionRole" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CustomerAccountProductInvolvement_Type">
+		<xs:sequence>
+			<xs:element name="BillingAccount" type="q15:BillingAccount_Type" minOccurs="0"/>
+			<xs:element name="PrepaidAccount" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="creditAmount" type="xs:string" minOccurs="0"/>
+						<xs:element name="bonusCreditAmount" type="xs:string" minOccurs="0"/>
+						<xs:element name="companyCreditAmount" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="OldBillingAccount" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="BillingAccount" type="q15:BillingAccount_Type" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Discount_Type">
+		<xs:sequence>
+			<xs:element name="id" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="description" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="status" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="action" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="minThreshold" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="maxThreshold" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="validFor" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="startDateTime" type="q15:DATE_TIME" minOccurs="0"/>
+						<xs:element name="endDateTime" type="q15:DATE_TIME" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="discount" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="AgreementOption" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="name" type="q15:Stringa_255_Char" minOccurs="0"/>
+						<xs:element name="value" type="q15:Stringa_255_Char" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="thresholdType" type="xs:string" minOccurs="0"/>
+			<xs:element name="discountCategory" type="xs:string" minOccurs="0"/>
+			<xs:element name="discountType" type="xs:string" minOccurs="0"/>
+			<xs:element name="InteractionStatus" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="statusCode" type="xs:string" minOccurs="0"/>
+						<xs:element name="action" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="HasThreshold" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Threshold" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="thresholdType" type="xs:string" minOccurs="0"/>
+									<xs:element name="minThreshold" type="xs:string" minOccurs="0"/>
+									<xs:element name="maxThreshold" type="xs:string" minOccurs="0"/>
+									<xs:element name="InteractionStatus" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="statusCode" type="xs:string" minOccurs="0"/>
+												<xs:element name="action" type="xs:string" minOccurs="0"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="vaidFor" type="q15:validFor_type" minOccurs="0"/>
+									<xs:element name="disocunt" type="xs:string" minOccurs="0"/>
+									<xs:element name="discount" type="xs:string" minOccurs="0"/>
+									<xs:element name="validFor" type="q15:validFor_type" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="billingCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="discountAmount" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Switchboard_Type">
+		<xs:sequence>
+			<xs:element name="root" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="ResourceReferences" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="NumericAddress" type="q15:NumericAddress_Type" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="OwnsResource" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Operator" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="NumericAddress" type="q15:NumericAddress_Type" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NumericAddress_Type">
+		<xs:sequence>
+			<xs:element name="number" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="prefix" type="q15:Stringa_255_Char" minOccurs="0"/>
+			<xs:element name="shortNumber" type="q15:Stringa_255_Char" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BillingGovernment_Type">
+		<xs:sequence>
+			<xs:element name="GeographicLocation" type="q15:GeographicLocation_Type" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Connectivity_Type">
+		<xs:sequence>
+			<xs:element name="ResourceForService" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="NumericAddress" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="number" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Customer" type="q15:Customer_Type" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="GeographicLocation_Type">
+		<xs:sequence>
+			<xs:element name="AGCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="DRCode" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

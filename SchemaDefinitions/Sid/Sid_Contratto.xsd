@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Info About File Version 
+XSD Versione: 5.21
+145299 - R58-20-1550 - Valorizzazione Flag_No_Carta e Indirizzo email no carta su BA Dipendente Mobile (Modifiche di interesse XBS-MOBILE)
+Nuovi campi noPaper, noPaperEmail nella sezione Dettaglio Prodotto/Servizio ProductOrder/ProductOrderItem/ProductComponent/ProductReferences/Service/
+(da LineeGuida Progettazione IF SID - 5.21/C8 - 2020)
+-->
+<xs:schema xmlns:cmn="http://xsd.telecomitalia.it/Schema/Common/CType_Sid" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:q1="http://xsd.telecomitalia.it/Schema/Common/CType_Sid" targetNamespace="http://xsd.telecomitalia.it/Schema/Common/sid_contratto" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="5.21">
+	<xs:import namespace="http://xsd.telecomitalia.it/Schema/Common/CType_Sid" schemaLocation="CType_Sid.xsd"/>
+	<xs:element name="SID">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Header" type="q1:Header_Order_Type"/>
+				<xs:element name="Customer" type="q1:Customer_Type"/>
+				<xs:element name="Agreement" type="q1:Agreement_Type" maxOccurs="unbounded"/>
+				<xs:element name="ProductOrder" type="q1:ProductOrder_Type" minOccurs="0"/>
+				<xs:element name="CustomerOld" type="q1:Customer_Type" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Info" type="q1:Info_Type"/>
+</xs:schema>

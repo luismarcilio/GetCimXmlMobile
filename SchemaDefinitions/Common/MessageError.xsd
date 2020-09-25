@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid XML Studio 6.1.15.0 - FREE Community Edition (http://www.liquid-technologies.com)-->
+<xsd:schema xmlns:bpm-error="http://telecomitalia.it/bpm/messageerror/2008-08-03" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://telecomitalia.it/bpm/messageerror/2008-08-03" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="MessageError" type="bpm-error:CEH-ErrorMsgType">
+    <xsd:annotation>
+      <xsd:documentation> Parent element for entire schema.
+			</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:complexType name="CEH-ErrorMsgType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" ref="bpm-error:MsgContext" />
+      <xsd:element minOccurs="0" ref="bpm-error:ErrorReport" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CEH-MsgContextType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="BusinessId" type="xsd:string" />
+      <xsd:element minOccurs="0" name="TransactionId" type="xsd:string" />
+      <xsd:element minOccurs="0" name="EntityId" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>
+						Unique Identifier of the process instance generating the error.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="EngineName" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>
+						Name of the BW / iProcess engine generating the error.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ProcessName" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>
+						Name of the process generating the error.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ServiceName" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>
+						Name of the service generating the error.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="ActivityName" type="xsd:string" />
+      <xsd:element minOccurs="0" name="MsgTimestamp" type="xsd:dateTime">
+        <xsd:annotation>
+          <xsd:documentation>
+						Timestamp specifing the time error occured. 
+						This is the time of the error and not the time message for sent to the process (not the EMF timestamp).
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="TrackId" type="xsd:string" />
+      <xsd:element minOccurs="0" name="MessageId" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CEH-ErrorReportType">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="ErrorStackTrace" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ErrorMsg" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ErrorProcessStack" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ErrorCode" type="xsd:string" />
+      <xsd:element minOccurs="0" name="ErrorType" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="MsgContext" type="bpm-error:CEH-MsgContextType" />
+  <xsd:element name="ErrorReport" type="bpm-error:CEH-ErrorReportType" />
+</xsd:schema>

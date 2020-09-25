@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/KFX_Proxy/SchemaDefinitions/Common/Schema.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/KFX_Proxy/SchemaDefinitions/Common/Schema.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="requirements">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="requirement" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="requirement">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ID"/>
+				<xs:element ref="FIELD_NAME"/>
+				<xs:element ref="PATH"/>
+				<xs:element ref="NAME"/>
+				<xs:element ref="VALUE"/>
+				<xs:element ref="TYPE"/>
+				<xs:element ref="TRACKING_TYPE"/>
+				<xs:element ref="DESCR"/>
+				<xs:element ref="EVENT"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ID" type="xs:double"/>
+	<xs:element name="FIELD_NAME" type="xs:string"/>
+	<xs:element name="PATH" type="xs:string"/>
+	<xs:element name="NAME" type="xs:string"/>
+	<xs:element name="VALUE" type="xs:string"/>
+	<xs:element name="TYPE" type="xs:string"/>
+	<xs:element name="TRACKING_TYPE" type="xs:string"/>
+	<xs:element name="DESCR" type="xs:string"/>
+	<xs:element name="EVENT" type="xs:string"/>
+</xs:schema>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/KFX_Proxy/SchemaDefinitions/Common/Schema.xsd2"
+	 targetNamespace="http://www.tibco.com/schemas/KFX_Proxy/SchemaDefinitions/Common/Schema.xsd2"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="TimeOutMngEventi">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="handler" minOccurs="0"/>
+				<xs:element ref="timeout" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="handler" type="xs:string"/>
+	<xs:element name="timeout" type="xs:int"/>
+	<xs:element name="Records">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="TimeOutMngEventi" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

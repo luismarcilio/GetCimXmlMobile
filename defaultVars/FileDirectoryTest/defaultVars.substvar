@@ -1,0 +1,29 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<repository xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns = "http://www.tibco.com/xmlns/repo/types/2002">
+	<globalVariables>
+		<globalVariable>
+			<name>error</name>
+			<value>/export/home/tibbwem/test_files/error/</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1601037600816</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>input</name>
+			<value>/export/home/tibbwem/test_files/input/*.xml</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1601037600891</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>output</name>
+			<value>/export/home/tibbwem/test_files/output/</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1601040832625</modTime>
+		</globalVariable>
+	</globalVariables>
+</repository>

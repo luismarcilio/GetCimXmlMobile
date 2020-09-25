@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns="http://www.ESB/SOAP/Header"
+	 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	 targetNamespace="http://www.ESB/SOAP/Header"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xsd:element name="SOAPHeader">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="user" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="password" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="service" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="TypeMsg" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="Operation" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="Timestamp" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="IDMsg" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="IDMsgESB" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="SRC" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="DEST" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="ExecState" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="ReceiveTimestamp" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="Notes" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="SIDBusinessID" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="SIDTransactionID" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="SIDMsgType" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="SIDMsgID" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="SIDMsgCode" type="xsd:string" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

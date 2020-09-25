@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--Created with Liquid XML Studio 6.1.15.0 - FREE Community Edition (http://www.liquid-technologies.com)-->
+<!-- edited with XMLSpy v2005 U (http://www.xmlspy.com) by any (Ru-Board) -->
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by aleooo (aleooo) -->
+<xs:schema xmlns:kmi="http://telecomitalia.it/kmi/processSchema/"
+	 xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 targetNamespace="http://telecomitalia.it/kmi/processSchema/"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="ProcessSchema">
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="kmi:NackAckAdy" minOccurs="0"/>
+				<xs:element ref="kmi:ReturnAdapter" minOccurs="0"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="NackAckAdj_type">
+		<xs:sequence>
+			<xs:element name="returnCodeDescription" type="xs:string"/>
+			<xs:element name="returnCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="messageCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="messageType" type="xs:string" minOccurs="0"/>
+			<xs:element name="businessId" type="xs:string" minOccurs="0"/>
+			<xs:element name="messageId" type="xs:string" minOccurs="0"/>
+			<xs:element name="transactionId" type="xs:string" minOccurs="0"/>
+			<xs:element name="accountId" type="xs:string" minOccurs="0"/>
+			<xs:element name="idEntity" type="xs:string" minOccurs="0"/>
+			<xs:element name="agreementDocumentNumber" type="xs:string" minOccurs="0"/>
+			<xs:element name="serviceToCall" type="xs:string" minOccurs="0"/>
+			<xs:element name="operationToCall" type="xs:string" minOccurs="0"/>
+			<xs:element name="platform" type="xs:string" minOccurs="0"/>
+			<xs:element name="flagSequencing" type="xs:string" minOccurs="0"/>
+			<xs:element name="prefix" type="xs:string" minOccurs="0"/>
+			<xs:element name="number" type="xs:string" minOccurs="0"/>
+			<xs:element name="messageTypeOut" type="xs:string" minOccurs="0"/>
+			<xs:element ref="kmi:sys_origin" minOccurs="0"/>
+			<xs:element name="requestSourceSystem" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReturnAdapter_type">
+		<xs:sequence>
+			<xs:element name="Code" type="xs:string"/>
+			<xs:element name="Message" type="xs:string"/>
+			<xs:element name="Esito" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="NackAckAdy" type="kmi:NackAckAdj_type"/>
+	<xs:element name="ReturnAdapter" type="kmi:ReturnAdapter_type"/>
+	<xs:complexType name="CustomFunctionInfo_type">
+		<xs:sequence>
+			<xs:element name="OperationCode" type="xs:string"/>
+			<xs:element name="CustomFunctionName" type="xs:string"/>
+			<xs:element name="SubOpCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="SubTypeCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="adpPlatform" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="CustomFunctionInfo" type="kmi:CustomFunctionInfo_type"/>
+	<xs:complexType name="ProcessVariable_type">
+		<xs:sequence>
+			<xs:element name="operationCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="dynamicProcess" type="xs:string" minOccurs="0"/>
+			<xs:element name="platform" type="xs:string" minOccurs="0"/>
+			<xs:element name="pricigType" type="xs:string" minOccurs="0"/>
+			<xs:element name="ServiceExternalIdLIF" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ProcessVariable" type="kmi:ProcessVariable_type"/>
+	<xs:element name="sys_origin" type="xs:string"/>
+</xs:schema>

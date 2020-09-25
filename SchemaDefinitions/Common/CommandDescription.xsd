@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 xmlns="http://www.tibco.com/schemas/KFX_Proxy/SchemaDefinitions/Common/CommandDescription.xsd"
+	 targetNamespace="http://www.tibco.com/schemas/KFX_Proxy/SchemaDefinitions/Common/CommandDescription.xsd"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="commandroot">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="element" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="element">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="command"/>
+				<xs:element ref="commandDescription"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="command" type="xs:string"/>
+	<xs:element name="commandDescription" type="xs:string"/>
+</xs:schema>

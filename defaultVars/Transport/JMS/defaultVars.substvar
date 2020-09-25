@@ -1,0 +1,37 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<repository xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" xmlns = "http://www.tibco.com/xmlns/repo/types/2002">
+	<globalVariables>
+		<globalVariable>
+			<name>DESTINATION_QUEUE</name>
+			<value>BILLING.CRM.SVI.MAIN</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1601044391874</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>URL</name>
+			<value>tibjmsnaming://localhost:7222</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1601047309603</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>password</name>
+			<value>#!+yZsqoGPJL7COBCEcuLQag==</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>Password</type>
+			<modTime>1600968801127</modTime>
+		</globalVariable>
+		<globalVariable>
+			<name>username</name>
+			<value>admin</value>
+			<deploymentSettable>true</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<modTime>1600799297629</modTime>
+		</globalVariable>
+	</globalVariables>
+</repository>
