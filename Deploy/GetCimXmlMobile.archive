@@ -10,7 +10,7 @@
             <authorProperty>DEOLIVEL</authorProperty>
             <processProperty>/Process/StubAcquireXml.process</processProperty>
         </processArchive>
-        <versionProperty>8</versionProperty>
+        <versionProperty>10</versionProperty>
         <authorProperty>DEOLIVEL</authorProperty>
         <addServiceSettableGvars>true</addServiceSettableGvars>
         <name>GetCimXmlMobile</name>

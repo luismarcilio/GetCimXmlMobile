@@ -98,7 +98,7 @@
     <pd:activity name="Log">
         <pd:type>com.tibco.pe.core.WriteToLogActivity</pd:type>
         <pd:resourceType>ae.activities.log</pd:resourceType>
-        <pd:x>225</pd:x>
+        <pd:x>226</pd:x>
         <pd:y>325</pd:y>
         <config>
             <role>User</role>
@@ -139,7 +139,7 @@
         <pd:x>407</pd:x>
         <pd:y>331</pd:y>
         <config>
-            <PermittedMessageType>XML Text</PermittedMessageType>
+            <PermittedMessageType>Text</PermittedMessageType>
             <SessionAttributes>
                 <transacted>false</transacted>
                 <acknowledgeMode>1</acknowledgeMode>
@@ -152,31 +152,13 @@
                 <JMSPriority>4</JMSPriority>
             </ConfigurableHeaders>
             <ConnectionReference>/Transport/JMS/JMS Connection.sharedjmscon</ConnectionReference>
-            <InDataxsdString ref="pfx2:Envelope"/>
         </config>
         <pd:inputBindings>
             <ns3:ActivityInput>
                 <Body>
-                    <xsl:copy-of select="$Parse-XML/pfx2:Envelope"/>
+                    <xsl:value-of select="$File-Poller1/ns:EventSourceOuputTextClass/fileContent/textContent"/>
                 </Body>
             </ns3:ActivityInput>
-        </pd:inputBindings>
-    </pd:activity>
-    <pd:activity name="Parse XML">
-        <pd:type>com.tibco.plugin.xml.XMLParseActivity</pd:type>
-        <pd:resourceType>ae.activities.XMLParseActivity</pd:resourceType>
-        <pd:x>213</pd:x>
-        <pd:y>72</pd:y>
-        <config>
-            <inputStyle>text</inputStyle>
-            <xsdVersion>default</xsdVersion>
-            <validateOutput>true</validateOutput>
-            <term ref="pfx2:Envelope"/>
-        </config>
-        <pd:inputBindings>
-            <xmlString>
-                <xsl:value-of select="$File-Poller1/ns:EventSourceOuputTextClass/fileContent/textContent"/>
-            </xmlString>
         </pd:inputBindings>
     </pd:activity>
     <pd:activity name="SetVariable">
@@ -201,7 +183,7 @@
     <pd:activity name="ERROR">
         <pd:type>com.tibco.pe.core.WriteToLogActivity</pd:type>
         <pd:resourceType>ae.activities.log</pd:resourceType>
-        <pd:x>1243</pd:x>
+        <pd:x>1244</pd:x>
         <pd:y>92</pd:y>
         <config>
             <role>User</role>
@@ -253,22 +235,8 @@
         <pd:conditionType>always</pd:conditionType>
     </pd:transition>
     <pd:transition>
-        <pd:from>Log</pd:from>
-        <pd:to>Parse XML</pd:to>
-        <pd:lineType>Default</pd:lineType>
-        <pd:lineColor>-16777216</pd:lineColor>
-        <pd:conditionType>always</pd:conditionType>
-    </pd:transition>
-    <pd:transition>
         <pd:from>File Poller1</pd:from>
         <pd:to>SetVariable</pd:to>
-        <pd:lineType>Default</pd:lineType>
-        <pd:lineColor>-16777216</pd:lineColor>
-        <pd:conditionType>always</pd:conditionType>
-    </pd:transition>
-    <pd:transition>
-        <pd:from>SetVariable</pd:from>
-        <pd:to>Log</pd:to>
         <pd:lineType>Default</pd:lineType>
         <pd:lineColor>-16777216</pd:lineColor>
         <pd:conditionType>always</pd:conditionType>
@@ -302,7 +270,14 @@
         <pd:conditionType>always</pd:conditionType>
     </pd:transition>
     <pd:transition>
-        <pd:from>Parse XML</pd:from>
+        <pd:from>SetVariable</pd:from>
+        <pd:to>Log</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>Log</pd:from>
         <pd:to>JMS Queue Sender</pd:to>
         <pd:lineType>Default</pd:lineType>
         <pd:lineColor>-16777216</pd:lineColor>
